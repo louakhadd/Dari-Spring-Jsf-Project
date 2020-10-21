@@ -1,0 +1,247 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+	
+	
+
+<head>
+    
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Colorlib Templates"/>
+    <meta name="author" content="Colorlib"/>
+    <meta name="keywords" content="Colorlib Templates"/>
+
+ 
+    <title>Au Register Forms by Colorlib</title>
+
+   
+    <link href="../resources/estimation/search/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"/>
+    <link href="../resources/estimation/search/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"/>
+   
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"/>
+
+    <link href="../resources/estimation/search/vendor/select2/select2.min.css" rel="stylesheet" media="all"/>
+    <link href="../resources/estimation/search/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all"/>
+
+    <link href="../resources/estimation/search/css/main.css" rel="stylesheet" media="all"/>   
+    
+    
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50" style="margin-left:-200px;">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Advanced Search</h2>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="form-row m-b-55">
+                         			  <div style="margin-left:200px;">
+                         			  <p:graphicImage value="../resources/img/maisonn.jpg" for="id11" title="House" style="width:60px;" /><p:spacer width="30" height="30" />
+								      <p:graphicImage value="../resources/img/appart.jpg"	for="id22" title="Apartment" style="width:60px;" /><p:spacer width="30" height="30" />
+								      <p:graphicImage value="../resources/img/terrain.jpg" for="id33" title="Land" style="width:60px;" /><p:spacer width="100" height="30" />
+                           			   </div>
+                           
+                            <div class="name" style="font-size:18px;">What is your project</div>
+                            <div class="value">
+                                <div class="input-group">   
+								      <div class="rs-select2 js-select-simple select--no-search">     
+                                       <h:selectOneMenu name="subject" class="filter-property" value="#{adController.rentingtype}">
+											<f:selectItem itemLabel="choose"  itemValue="#{null}" />
+											<f:selectItems value="#{adController.rentingtypes}" />
+									   </h:selectOneMenu>
+                                        <div class="select-dropdown"></div>
+                                    </div>	     
+                                </div>
+                            </div>
+                            <!--  -->
+	                             <h:panelGroup rendered="#{adController.rentingtypes == 'RENT'}">
+							        <p>This will be shown if the selected item equals to "one".</p>
+							    </h:panelGroup>
+                             <!--  -->
+                        </div>
+                        <div class="form-row">
+                            <div class="name" style="font-size:18px;">what do you want to buy?</div>
+                            <div class="value">
+                                <div class="input-group">   
+								      <div class="rs-select2 js-select-simple select--no-search">     
+                                       <h:selectOneMenu name="subject" class="filter-property" value="#{adController.kindofgood}">
+											<f:selectItem itemLabel="choose"  itemValue="#{null}" />
+											<f:selectItems value="#{achatLocationControllerJsf.kindOfGoods}" />
+									   </h:selectOneMenu>
+                                        <div class="select-dropdown"></div>
+                                    </div>	     
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="form-row">
+                            <div class="name" style="font-size:18px;">City</div><p:spacer width="100" height="10" />
+                            <div class="value">
+                                <div class="input-group">   
+								      <div class="rs-select2 js-select-simple select--no-search">     
+                                     <h:selectOneMenu
+												value="#{adController.location}">
+											<f:selectItems value="#{achatLocationControllerJsf.cities}" var="role"
+												itemLabel="#{role}" itemValue="#{role}" />
+										</h:selectOneMenu>	
+                                        <div class="select-dropdown"></div>
+                                    </div>	     
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="form-row m-b-55">
+                            <div class="name" style="font-size:18px; margin-top:-7px;">For what budget?</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" value="#{adController.pricemin}" />
+                                            <label class="label--desc">Budget min</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" value="#{adController.pricemax}" />
+                                            <label class="label--desc">budget max</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       			
+									<h:commandLink value="Calculate Max Budget" style="color:#C879D9; margin-left:20px;" ></h:commandLink>
+									<br/><br/><br/>
+														
+						
+						<div class="form-row m-b-55">
+                            <div class="name" style="font-size:18px; margin-top:-7px;">Built Area?</div><p:spacer width="50" height="20" />
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" value="#{adController.areamin}" />
+                                            <label class="label--desc">Area min</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" value="#{adController.areamax}" />
+                                            <label class="label--desc">Area max</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       				
+						<div class="form-row m-b-55">		
+						<table><tr>
+					<td><div class="name" style="font-size:18px; margin-top:-7px;">Number of Rooms?</div>
+						 <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" style="width:60px" value="#{adController.nbRooms}"/>
+                                        </div>
+                                    </div>
+                                </div>
+						</div></td><td style="color:white">...........</td>
+						<td>
+						<div class="name" style="font-size:18px; margin-top:-7px;">Number of Baths?</div>
+						 <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" style="width:60px" value="#{adController.nbBaths}"/>
+                                        </div>
+                                    </div>
+                                </div>
+						</div>
+						</td>
+						<td style="color:white">...........</td>
+						<td>
+						<div class="name" style="font-size:18px; margin-top:-7px;">Number of Garages?</div>
+						 <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-3">
+                                        <div class="input-group-desc">
+                                            <h:inputText class="input--style-5" type="text" name="area_code" style="width:60px" value="#{adController.nbGarage}"/>
+                                        </div>
+                                    </div>
+                                </div>
+						</div>
+						</td>
+						
+						</tr></table>
+						</div>
+								
+						
+						<div class="form-row">
+                            <div class="name" style="font-size:18px;">additional criteria?</div>
+                            <div class="value">
+                                <div class="input-group">   
+									
+							<h:outputText style="font-style:italic" value="Furnished"></h:outputText>
+								<h:selectBooleanCheckbox
+									value="#{adController.furnished}"></h:selectBooleanCheckbox>
+									
+							<h:panelGrid> 
+							<h:selectBooleanCheckbox styleClass="checkimage" id="id0" value="#{adController.sousSol}"/>
+								      <p:graphicImage for="id0" value="../resources/img/estimation/soussol.PNG" title="Basement" style="width:60px;" />	  
+							<h:selectBooleanCheckbox styleClass="checkimage" id="id1"  value="#{adController.ascenseur}"/>
+								      <p:graphicImage for="id1" value="../resources/img/estimation/ascenseur.PNG" title="Ascenseur" style="width:60px;" />	  
+       						<h:selectBooleanCheckbox styleClass="checkimage" id="id2" value="#{adController.garden}" />
+								      <p:graphicImage for="id2" value="../resources/img/estimation/jardin.PNG" title="Garden" style="width:60px;" />
+					        <h:selectBooleanCheckbox styleClass="checkimage" id="id3" value="#{adController.swimmingPool}" />               
+								      <p:graphicImage for="id3" value="../resources/img/estimation/Piscine.PNG" title=">SwimmingPool" style="width:60px;" />
+					        <h:selectBooleanCheckbox styleClass="checkimage" id="id4" value="#{adController.terrace}"  />			      
+								      <p:graphicImage for="id4" value="../resources/img/estimation/Terrace.PNG" title="Terrace" style="width:60px;" />								      
+					        <h:selectBooleanCheckbox styleClass="checkimage" id="id5"  value="#{adController.airConditioning}" />						
+								      <p:graphicImage for="id5" value="../resources/img/estimation/clim.jpg" title="clim" style="width:50px;" />
+							<h:selectBooleanCheckbox styleClass="checkimage" id="id6" value="#{adController.heater}" />						
+								      <p:graphicImage for="id6" value="../resources/img/estimation/heater.png" title="chauff" style="width:50px;" />
+                             </h:panelGrid>   
+                                </div>
+                            </div>
+                        </div>	
+                        
+                        <div>
+                        
+                            <h:commandButton value="Search" action="#{adController.getSearchp1()}"></h:commandButton>
+                       
+                        </div>
+                        
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-left:1000px; margin-bottom: 1000px; margin-top:-950px;">
+    	<h:outputLabel value="testtest testtest testtest testtest testtest testtest"  ></h:outputLabel>
+    	<p:graphicImage value="../resources/img/villa.jpg"	title="Normandie" style="width:310px;" />
+    </div>
+
+    <script src="../resources/estimation/search/vendor/jquery/jquery.min.js"></script>
+
+    <script src="../resources/estimation/search/vendor/select2/select2.min.js"></script>
+    <script src="../resources/estimation/search/vendor/datepicker/moment.min.js"></script>
+    <script src="../resources/estimation/search/vendor/datepicker/daterangepicker.js"></script>
+
+    <script src="../resources/estimation/search/js/global.js"></script>
+
+</body>	
+	
+
+	</ui:define>
+</ui:composition>

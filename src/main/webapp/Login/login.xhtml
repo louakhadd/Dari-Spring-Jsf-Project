@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+		<h:form id="form">
+		<link rel="stylesheet" type="text/css" href="../resources/login.css" media="screen" />
+		
+		<p style="margin-top: 40px;"></p>
+		
+		<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked="checked"><label for="tab-1" class="tab">Sign In</label></input>
+			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label></input>
+													<div class="login-form">
+											
+											<div class="sign-in-htm">
+								
+								<div class="group">
+			
+			
+				<h:outputText  class="label" for="user" value="Login (Email)" /></div>
+									<div class="group">
+				
+				<h:inputText  class="input" id="user" value="#{UserRestController.email}" /></div>
+									<div class="group">
+				
+				<h:outputText  class="label" for="pass" value="Password" /></div>
+									<div class="group">
+				
+				<h:inputSecret class="input"  id="pass" value="#{UserRestController.password}" /></div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked="checked"></input>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+									<div class="group">
+				
+				<h:commandButton  class="button"  id="btn" value="Sign In"
+					action="#{UserRestController.doLogin()}" /></div>
+					
+				<h:message for="btn" />
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div></div>
+				</div></div></div>
+		</h:form>
+		
+		<p style="margin-bottom: 40px;"></p>
+	
+</ui:composition>

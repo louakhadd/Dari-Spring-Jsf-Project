@@ -1,0 +1,246 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:p1="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+	
+
+	<style type="text/css">
+.color {
+	BackColor: #F0F0F0;
+}
+</style>
+
+
+
+	<body>
+		<script type="text/javascript">
+			PrimeFaces.locales['de'] = {
+				closeText : 'Schließen',
+				prevText : 'Zurück',
+				nextText : 'Weiter',
+				monthNames : [ 'Januar', 'Februar', 'März', 'April', 'Mai',
+						'Juni', 'Juli', 'August', 'September', 'Oktober',
+						'November', 'Dezember' ],
+				monthNamesShort : [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+						'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+				dayNames : [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch',
+						'Donnerstag', 'Freitag', 'Samstag' ],
+				dayNamesShort : [ 'Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre',
+						'Sam' ],
+				dayNamesMin : [ 'S', 'M', 'D', 'M ', 'D', 'F ', 'S' ],
+				weekHeader : 'Woche',
+				firstDay : 1,
+				isRTL : false,
+				showMonthAfterYear : false,
+				yearSuffix : '',
+				timeOnlyTitle : 'Nur Zeit',
+				timeText : 'Zeit',
+				hourText : 'Stunde',
+				minuteText : 'Minute',
+				secondText : 'Sekunde',
+				currentText : 'Aktuelles Datum',
+				ampm : false,
+				month : 'Monat',
+				week : 'Woche',
+				day : 'Tag',
+				allDayText : 'Ganzer Tag'
+			};
+		</script>
+	
+	
+
+		<div class="map-section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="map">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107002.020096289!2d-96.80666618302782!3d33.06138629992991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c21da13c59513%3A0x62aa036489cd602b!2sPlano%2C+TX%2C+USA!5e0!3m2!1sen!2sbd!4v1558246953339!5m2!1sen!2sbd"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="contact-section">
+			<div class="container">
+				<div class="contact-form">
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="contact-form">
+								<h4>Add Your property</h4>
+
+								<p:growl id="messages" showDetail="true" />
+								<h:form enctype="multipart/form-data">
+
+
+
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="Property type :"></h:outputText>
+										</div>
+										<div class="col-lg-6">
+											<h:selectOneMenu value="#{adController.kindofgood}"
+												class="color">
+												<f:selectItem itemLabel="Choose your property type"
+													itemValue="#{null}" />
+												<f:selectItems value="#{adController.kindofgoods}" />
+
+											</h:selectOneMenu>
+										</div>
+									</div>
+									<br />
+
+
+									<br />
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="Location :"></h:outputText>
+											<h:inputText value="#{adController.location}"></h:inputText>
+										</div>
+										<div class="col-lg-6">
+											<h:outputText value="Area:"></h:outputText>
+											<h:inputText value="#{adController.area}"></h:inputText>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="Start Date"></h:outputText>
+										</div>
+										<div class="col-lg-6">
+											<p:calendar id="inline" value="#{adController.startDate}" />
+										</div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="Rent Period"></h:outputText>
+										</div>
+										<div class="col-lg-6">
+											<h:selectOneMenu value="#{adController.rentperiod}">
+												<f:selectItem itemLabel="Choose your rent period"
+													itemValue="#{null}" />
+												<f:selectItems value="#{adController.rentperiods}" />
+											</h:selectOneMenu>
+										</div>
+									</div>
+									<br />
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="End Date "></h:outputText>
+										</div>
+										<div class="col-lg-6">
+											<p:calendar id="inline1" value="#{adController.endDate}" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<h:outputText value="renting type "></h:outputText>
+										</div>
+										<div class="col-lg-6">
+											<h:selectOneMenu value="#{adController.rentingtype}">
+												<f:selectItem itemLabel="Choose your rent type"
+													itemValue="#{null}" />
+												<f:selectItems value="#{adController.rentingtypes}" />
+											</h:selectOneMenu>
+										</div>
+									</div>
+									<br />
+									<h:outputText value="Description of your house:"></h:outputText>
+									<h:inputTextarea value="#{adController.description}"></h:inputTextarea>
+
+									<h:outputText value="Price:"></h:outputText>
+									<h:inputText value="#{adController.price}"></h:inputText>
+
+									<h:outputText value="Number Rooms: "></h:outputText>
+									<h:inputText value="#{adController.nbRooms}"></h:inputText>
+
+									<h:outputText value="Number Garage: "></h:outputText>
+									<h:inputText value="#{adController.nbGarage}"></h:inputText>
+
+									<h:outputText value="Number Baths: "></h:outputText>
+									<h:inputText value="#{adController.nbBaths}"></h:inputText>
+
+									<br />
+									<h:outputText value="Bonus :"></h:outputText>
+
+									<div class="row">
+						<h:outputText style="font-style:italic" value="Furnished"></h:outputText>
+										<h:selectBooleanCheckbox value="#{adController.furnished}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="Terrace"></h:outputText>
+										<h:selectBooleanCheckbox value="#{adController.terrace}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="Garden"></h:outputText>	
+									<h:selectBooleanCheckbox value="#{adController.garden}"></h:selectBooleanCheckbox>
+										
+									<h:outputText style="font-style:italic" value="SwimmingPool"></h:outputText>
+									<h:selectBooleanCheckbox value="#{adController.swimmingPool}"></h:selectBooleanCheckbox>
+										
+									<h:outputText style="font-style:italic" value="Basement"></h:outputText>
+									<h:selectBooleanCheckbox value="#{adController.sousSol}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="Garage"></h:outputText>
+									<h:selectBooleanCheckbox value="#{adController.garage}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="AirConditioning"></h:outputText>
+									<h:selectBooleanCheckbox value="#{adController.airConditioning}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="Elevator"></h:outputText>	
+									<h:selectBooleanCheckbox value="#{adController.ascenseur}"></h:selectBooleanCheckbox>
+									
+									<h:outputText style="font-style:italic" value="Heater"></h:outputText>		
+									<h:selectBooleanCheckbox value="#{adController.heater}"></h:selectBooleanCheckbox>
+											
+
+									</div>
+
+
+									<div class="row">
+										<br />
+										<div class="col-lg-6">
+											<p:fileUpload value="#{adController.file}" mode="simple"
+												skinSimple="true" />
+										</div>
+
+									</div>
+
+
+									<br />
+									<p:commandButton class="site-btn c-btn" value="Submit"
+										action="#{adController.addad()}" ajax="false"></p:commandButton>
+
+								</h:form>
+
+							</div>
+						</div>
+
+                        
+               
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <h4>Contact Details</h4>
+                        <ul class="contact-addr">
+                            <li><i class="flaticon-placeholder"></i><span>132 Liberty Streetelit, Plano, Tunisia</span>
+                            </li>
+                            <li><i class="flaticon-envelope"></i><span>Dari@home.com</span></li>
+                            <li><i class="flaticon-smartphone"></i><span>214-805-4428</span></li>
+                        </ul>
+                       <p>This application By   Raya Hadhri Loua Ben khaddouma Majdi Chaouat Oumayma Homrani Oussama Boubaker Youssef Gharsallah
+                        </p>
+                        <p>4 InfoB 2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  
+
+</body>
+</ui:define>
+</ui:composition>

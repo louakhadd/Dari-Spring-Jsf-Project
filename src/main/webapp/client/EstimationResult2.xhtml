@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+	
+
+<head>
+	<script>
+	function myFunction() {
+		  var x = document.getElementById("myDIV");
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  } 
+		}
+	function myFunction1() {
+		  var x = document.getElementById("myDIV1");
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  } 
+		  else {
+		    x.style.display = "none";
+		  }
+		}
+	</script>
+</head>
+	
+	<br/><br/>
+		<div style="margin-left: 30px">
+			<h4 style="color: #311044;">Thank you for using the Dari.tn
+				online estimation service.</h4>
+			<h:outputText style="font-size: bold; color:#D3C6DA">Based on the characteristics of the property you have entered, here is a first estimate:</h:outputText>
+		</div>
+		<br/>
+	<center>
+	<fieldset style="background-color:#F5E2FF; margin-bottom: 20px">
+	<h:form>
+	<br/>
+	<h:outputText value="The value of your property has been estimated according to the characteristics you provided:"></h:outputText><br/>
+	<h:outputText value="#{estimationControllerJsf.nbPiece}-rooms, #{estimationControllerJsf.surfaceTotal}m² House located in #{estimationControllerJsf.ville}"></h:outputText><br/>
+		
+<p:separator />
+	<h:outputLabel style="font-style:bold;font-size:35px;" value="Average price: #{estimationControllerJsf.total8} "></h:outputLabel><br/><br/><br/>
+
+	<h:form>
+	<h:outputLabel style="width:350px" value="What do you think about the estimation result?"></h:outputLabel><br/>
+	<h:commandButton style="border-radius:12px 0 12px 0; border:none;color:#fff; font:bold 12px Verdana; padding:6px 0 6px 0;background:#6F6F8A;width:60px;" value="Low" action="#{estimationControllerJsf.low()}" onclick="myFunction()" /><p:spacer width="7" height="20" />
+	<h:commandButton style="border-radius:12px 0 12px 0; border:none;color:#fff; font:bold 12px Verdana; padding:6px 0 6px 0;background:#6F6F8A;width:60px;" value="Good" action="#{estimationControllerJsf.good()}" onclick="myFunction()" /><p:spacer width="7" height="20" />
+	<h:commandButton style="border-radius:12px 0 12px 0; border:none;color:#fff; font:bold 12px Verdana; padding:6px 0 6px 0;background:#6F6F8A;width:60px;" value="High" action="#{estimationControllerJsf.high()}" onclick="myFunction()" type="submit"/>
+	</h:form>
+	 <div id="myDIV" style="display:none;">
+	 	<br/>
+     	<h:outputLabel style="font-style:bold;font-size:25px;color:#A52A2A;" value="Thanks for voting! your opinion will help us improve out Estimation" />	
+   	</div>
+  
+	
+<p:separator />
+	<h:outputText style="font-style: Italic" value="Indice de confiance"></h:outputText>
+	<p:graphicImage value="../resources/img/estimation/Indice.png"	title="indice" /><br/>
+	<h:outputText style="font-style: Italic" value="NB: This estimate must be refined by a professional"></h:outputText>
+<br/>
+</h:form>
+	</fieldset>
+<h:form>
+ 
+	<h:commandButton class="btn btn-primary" value="Make a new estimate" action="#{estimationControllerJsf.redirect()}" style="background:#6F6F8A;" ></h:commandButton>
+	<p:spacer width="6" height="20" />
+
+</h:form>
+<br/><br/>
+</center>
+
+
+
+ 
+	
+	</ui:define>
+</ui:composition>

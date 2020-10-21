@@ -1,0 +1,179 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+		
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+input.invalid {
+  background-color: #ffdddd;
+}
+
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step.finish {
+  background-color: #4CAF50;
+}
+</style>
+<script src="../resources/estimation/prices.js"></script>
+</head>
+
+<body>
+
+<form id="regForm">
+  <h1>Prices Per m²:</h1><br/><br/>
+  
+  <div class="tab">Houses:<br/>
+  <h:panelGroup columns="2">
+  <center>
+   <h:dataTable value="#{achatLocationControllerJsf.prices}" var="employe"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Ville" />
+						</f:facet>
+						<h:outputText value="#{employe.ville}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Minimum" />
+						</f:facet>
+						<h:outputText value="#{employe.minpMaison}" />
+					</h:column>	
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Moyen" />
+						</f:facet>
+						<h:outputText value="#{employe.prixMaison}" />
+					</h:column>	
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Maximum" />
+						</f:facet>
+						<h:outputText value="#{employe.maxpMaison}" />
+					</h:column>	
+				</h:dataTable>
+				 </center>
+	</h:panelGroup>
+  </div>
+ 
+  <div class="tab">Apartment:<br/>
+  <h:panelGroup columns="2">
+  <center>
+    <h:dataTable value="#{achatLocationControllerJsf.prices}" var="employe"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Ville" />
+						</f:facet>
+						<h:outputText value="#{employe.ville}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Minimum" />
+						</f:facet>
+						<h:outputText value="#{employe.minpAppart}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Moyen" />
+						</f:facet>
+						<h:outputText value="#{employe.prixAppart}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prix Maximum" />
+						</f:facet>
+						<h:outputText value="#{employe.maxpAppart}" />
+					</h:column>
+	</h:dataTable>  </center></h:panelGroup>
+  </div>
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+
+  </div>
+</form>
+
+</body>
+
+
+
+
+
+	</ui:define>
+</ui:composition>

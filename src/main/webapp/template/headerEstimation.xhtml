@@ -1,0 +1,207 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Homes Template"/>
+    <meta name="keywords" content="Homes, unica, creative, html"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Homes Page | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900i" rel="stylesheet"/>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/jquery-ui.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/flaticon.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/css/style.css" type="text/css"/>
+   
+   
+   
+   <!-- menu -->
+    <link rel="stylesheet" href="../resources/menu/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/linericon/style.css"/>
+    <link rel="stylesheet" href="../resources/menu/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/owl-carousel/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/lightbox/simpleLightbox.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/nice-select/css/nice-select.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/animate-css/animate.css"/>
+    <link rel="stylesheet" href="../resources/menu/vendors/flaticon/flaticon.css"/>
+    <!-- main css -->
+    <link rel="stylesheet" href="../resources/menu/css/style.css"/>
+    <link rel="stylesheet" href="../resources/menu/css/responsive.css"/>
+   <!-- Menu -->
+   
+   
+
+
+<head>
+
+<link
+	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' />
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script
+	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
+
+<link rel="stylesheet" href="../resources/estimation/step.css"
+	type="text/css" />
+<script src="../resources/estimation/step.js"></script>
+
+<SCRIPT>
+	function onCheckboxChanged(checked) {
+		if (checked)
+			$("#hiddenRow").fadeIn(500, 'linear');
+
+		else
+			$("#hiddenRow").fadeOut(900, 'linear');
+	}
+	function onCheckboxChanged1(checked) {
+		if (checked)
+			$("#hiddenRow1").fadeIn(500, 'linear');
+
+		else
+			$("#hiddenRow1").fadeOut(900, 'linear');
+	}
+	function onCheckboxChanged2(checked) {
+		if (checked)
+			$("#hiddenRow2").fadeIn(500, 'linear');
+
+		else
+			$("#hiddenRow2").fadeOut(900, 'linear');
+	}
+	function onCheckboxChanged3(checked) {
+		if (checked)
+			$("#hiddenRow3").fadeIn(500, 'linear');
+
+		else
+			$("#hiddenRow3").fadeOut(900, 'linear');
+	}
+	
+	function myFunction() {
+		  var x = document.getElementById("myDIV");
+		  if (x.style.display === "none") {
+		    x.style.display = "block";
+		  } else {
+		    x.style.display = "none";
+		  }
+		}
+		
+		function myFunction1() {
+			  var x = document.getElementById("myDIV1");
+			  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } else {
+			    x.style.display = "none";
+			  }
+			}
+		function myFunction2() {
+			  var x = document.getElementById("myDIV2");
+			  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } else {
+			    x.style.display = "none";
+			  }
+			}
+	
+</SCRIPT>
+
+</head>
+
+
+
+
+ <header class="header_area">
+            <div class="top_menu">
+                <div class="container">
+                    <div class="top_inner">
+                        <div class="float-left">
+                            <a href="#">Visit Us</a>
+                            <a href="#">Online Support</a>
+                        </div>
+                        <div class="float-right">
+                            <ul class="list header_socila">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_menu" id="mainNav">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container">
+                      
+                        <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""/><img src="img/logo-2.png" alt="" /></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item active"><a class="nav-link" href="../client/Accueil.jsf">Home</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="../client/AddAd.jsf">Post your House</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="../client/AdVente.jsf">Sell</a></li> 
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rent</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="../client/AdRent.jsf">Rent</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="../client/AdHRent.jsf">Holiday Renting</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="../client/AdTRent.jsf">Temporary Renting</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Estimate</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="../client/EstimationAccueil.jsf">Property Estimate</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="../client/EstimationAccueilLoyer.jsf">Rent Estimate</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Credit Simulation</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Furniture</a></li>
+                                <li class="nav-item submenu dropdown">
+                                    <a href="../client/Profil.jsf" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                                    <ul class="dropdown-menu">
+                                     	<li class="nav-item"><a class="nav-link" href="../client/Profil.jsf">Profil</a></li>
+                                     	<li class="nav-item"><a class="nav-link" href="../client/Statistique.jsf">About Dari.tn</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="../Login/login.jsf">LogOut</a></li>
+                                    </ul>
+                                </li> 
+                                
+                            </ul>
+                        </div> 
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
+
+      <section class="hero-section home-page set-bg"
+			data-setbg="../resources/img/bg.jpg">
+			<div class="container hero-text text-white">
+				<h1>Free online property valuation</h1>
+				<p:separator />
+				<h3>Get the price of your house or apartment in 2 minutes</h3>
+				<p:separator />
+			</div>
+		</section>
+		
+</ui:composition>

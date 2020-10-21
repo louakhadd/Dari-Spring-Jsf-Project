@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:p1="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+
+		
+
+<body>
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+  
+
+    <section class="contact-section">
+     
+        <div class="container">
+            
+               
+                    <div class="contact-form" >
+                        <h4>Hey,want to post your house ?</h4>
+                        <h:form>
+                       <center>
+                            <div class="row">
+                                   <div class="col-lg-12">
+           
+                          
+ <h:commandLink  class="site-btn c-btn" action="#{achatLocationControllerJsf.AddSell()}" value="Post for Sell" style="margin-right:20px;" target="_blank">
+</h:commandLink>
+<h:commandLink  class="site-btn c-btn" action="#{achatLocationControllerJsf.AddRent()}" value="Post For Rent" style="margin-right:20px;" target="_blank">
+</h:commandLink>
+                    
+    
+                                </div>
+                            </div>
+                            </center>
+                        </h:form>
+                    </div>
+                </div>
+    </section>    
+
+	
+
+
+</body>
+</ui:define>
+</ui:composition>

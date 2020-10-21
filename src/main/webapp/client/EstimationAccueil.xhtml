@@ -1,0 +1,117 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/template/templateEstim.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+
+
+	 <body>
+		
+		<section class="contact-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+				<h3>Why estimate the value of your home?</h3>
+				<br />
+				<p>The realization of a real estate appraisal can have many
+					motivations: a sale project following a professional transfer or
+					the growing family or even the simple curiosity to know the value
+					of his property. Before even asking a real estate agent for a home
+					appraisal, it is possible and even recommended to make an appraisal
+					online. Dari.tn is free, fast and without obligation</p>
+				<br />
+				
+			
+				<div>
+				<h3>How to estimate a property for free?</h3><br/>
+				</div>
+				<p>The valuation of a property takes into account its location, its environment (shops, transport),
+				 its characteristics (condition, area, exposure ...) and demand. To refine the calculation of the sale
+				 price you can also use simulators or contact a local real estate agent.</p>
+
+
+				<h4>Select the type of property:</h4>
+				<br />
+				<table border-collapse="collapse" align="center">
+					<tr>
+						<td><p:link id="idNormandie"
+								href="#{estimationControllerJsf.redirectEstimerM()}"
+								target="_blank">
+								<p:graphicImage value="../resources/img/estimation/maison.jpg"
+									title="Normandie"/>
+							</p:link></td>
+						<td><h:outputText style="color:white"
+								value="aaaaa:"></h:outputText></td>
+						<td><p:link id="idNormandie1"
+								href="#{estimationControllerJsf.redirectEstimerApp()}"
+								target="_blank">
+								<p:graphicImage value="../resources/img/estimation/appart.jpg"
+									title="Normandie" />
+							</p:link></td>
+					</tr>
+
+				</table>
+				
+				</div>
+			
+				
+				<div class="col-lg-4">
+						<div class="contact-info">
+							<h4>Contact a real estate agency for a free estimate</h4>
+							<ul class="contact-addr">
+							<p:graphicImage value="../resources/img/estimation/agence.png"
+									title="Normandie" style="width:280px; height: 200px" />
+							<p>75% of sellers contact a professional to obtain a reliable estimate and thus sell at the best price.</p>	
+							</ul>						
+						</div>
+					</div>
+				
+				</div>
+				
+				
+				<br/><br/>	<p:separator /><br/><br/><br/>
+		
+				<table border-collapse="collapse">
+				<tr>
+					<td><h4 >Compare your property with <br/> the market</h4>
+					<br/>
+					<p>Find out the selling prices in your<br/> sector thanks to Dari's tools</p>
+					</td>
+					
+					<td style="color:white">aaaaaaaaaaaa</td>
+					
+					
+					<td><p:graphicImage value="../resources/img/estimation/map.PNG"
+									title="Normandie" style="width: 250px ;height: 150px" /></td>
+	
+					
+					<td style="color:white">aaaa</td>
+	
+						
+					<td><p:graphicImage value="../resources/img/estimation/sold.jpg"
+									title="Normandie" style="width: 250px ;height: 150px" /></td>
+				</tr>
+				</table>
+		<br/>
+		
+		<div style="margin-left:335px">
+					
+				<h:form>
+					<a href="Prices.jsf" class="site-btn list-btn" style="width: 250px;background:#6F6F8A;color:white;">Prices per m²</a><p:spacer width="38" height="20" />
+					<a href="LastSold.jsf" class="site-btn list-btn" style="width: 250px;background:#6F6F8A;color:white;">LastSold</a>
+				</h:form>
+				
+				</div>
+				</div>
+
+		</section>
+
+	</body>
+
+
+</ui:define>
+</ui:composition>

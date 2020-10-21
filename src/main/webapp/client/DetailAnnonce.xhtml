@@ -1,0 +1,210 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:p1="http://primefaces.org/ui"
+		template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+
+
+
+
+	<h:body>
+
+
+		<div class="single-property">
+			<div class="container">
+				<div class="row spad-p">
+					<div class="col-lg-12">
+						<div class="property-title">
+							<h3>#{adController.ad.kindofgood}</h3>
+						
+						</div>
+						<div class="property-price">
+							<p>Price</p>
+							<span>#{adController.ad.price}</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="property-img owl-carousel">
+							<div class="single-img">
+								<img src="../resources/img/about-img/1.jpg" alt="" />
+							</div>
+							<div class="single-img">
+								<img src="../resources/img/about-img/2.jpg" alt="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="property-details">
+
+			<div class="container">
+				<div class="row sp-40 spt-40">
+					<div class="col-lg-8">
+						<div class="p-ins">
+							<div class="row details-top">
+								<div class="col-lg-12">
+									<div class="t-details">
+										<div class="popular-room-features single-property">
+										<h:form>
+										<h:commandButton class="site-btn list-btn" value="Favorite" action="#{adController.favoris(adController.ad.idAd)}" style="margin-left:500px;background: #8AD144;border:#8AD144; color:white;margin-left:150px;" />
+										</h:form>
+										<br/><br/>
+											<div class="size">
+												<p>Area</p>
+												<img src="../resources/img/rooms/size.png" alt="" />
+												<span>#{adController.ad.area}</span>
+											</div>
+											<div class="beds">
+												<p>Rooms</p>
+												<img src="../resources/img/rooms/bed.png" alt="" />
+												<span>#{adController.ad.nbRooms}</span>
+											</div>
+											<div class="baths">
+												<p>Baths</p>
+												<img src="../resources/img/rooms/bath.png" alt="" />
+												<span>#{adController.ad.nbBaths}</span>
+											</div>
+											<div class="garage">
+												<p>Garage</p>
+												<img src="../resources/img/rooms/garage.png" alt="" />
+												<span>#{adController.ad.nbGarage}</span>
+											</div>
+											<div class="garage">
+												<p>Like</p>
+												<img src="../resources/img/rooms/like.png" alt=""
+													width="30" height="30" />
+												<span>#{adController.ad.nbLikes}</span>
+											</div>
+											<div class="garage">
+												<p>Dislike</p>
+												<img src="../resources/img/rooms/dislike.png" alt=""
+													width="30" height="30" />
+												<span>#{ad.nbDisLikes}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<h:form>
+										<div class="property-description">
+											<h4>Description :</h4>
+										<p>#{adController.ad.description} </p> 
+	
+											<h4>Bonus :</h4>
+<h:outputLabel rendered="#{adController.ad.furnished==true}" value="? Furnished" />
+<h:outputLabel rendered="#{adController.ad.terrace==true}" value="?Terrace" />
+<h:outputLabel rendered="#{adController.ad.garden==true}" value="? Garden" />
+<h:outputLabel rendered="#{adController.ad.swimmingPool==true}" value="?SwimmingPool" />
+<h:outputLabel rendered="#{adController.ad.airConditioning==true}" value="? AirConditioning" />
+<h:outputLabel rendered="#{adController.ad.ascenseur==true}" value="? Ascenseur" />
+<h:outputLabel rendered="#{adController.ad.heater==true}" value="? Heater" />
+<h:outputLabel rendered="#{adController.ad.sousSol==true}" value="?sous_sol"/>					 	
+											<br />
+
+				<h:outputText  rendered="#{not empty adController.ad.rentperiod}" value="Rent Period:" />
+				<h:outputText  rendered="#{not empty adController.ad.rentperiod}" value="#{adController.ad.rentperiod}" style="font-weight: bold" ></h:outputText>
+													<br />
+											<h:outputText  rendered="#{not empty adController.ad.startDate}" value="startDate of Renting:" />
+													<h:outputText  rendered="#{not empty adController.ad.startDate}" value="#{adController.ad.startDate}" style="font-weight: bold" ></h:outputText>
+												<br />
+												<h:outputText  rendered="#{not empty adController.ad.endDate}" value="endDate of Renting:" />
+													<h:outputText  rendered="#{not empty adController.ad.endDate}" value="#{adController.ad.endDate}" style="font-weight: bold" ></h:outputText>
+														<br />
+														<h:outputText  rendered="#{not empty adController.ad.rentingtype}" value="renting type:" />
+													<h:outputText  rendered="#{not empty adController.ad.rentingtype}" value="#{adController.ad.rentingtype}" style="font-weight: bold" ></h:outputText>
+										
+								
+<br></br>
+								
+						<h4>Comments :</h4>	
+						<ui:repeat var="comment" 
+								value="#{adController.listCommentaire(adController.ad)}">
+												
+												
+		
+
+								<h4>#{comment.client.firstName} : #{comment.descriptionComment}
+								</h4>
+
+						</ui:repeat>
+				
+
+
+											<br></br>
+											<br></br>
+											<h4>Rating :</h4>
+											<p:rating value="#{adController.ad.rating}" stars="5"
+												cancel="false" />
+											
+</div>
+
+				
+				</h:form>					
+
+
+									<div class="location-map">
+										<h4>#{adController.ad.location}</h4>
+
+										<div class="map">
+											<iframe
+												src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107002.020096289!2d-96.80666618302782!3d33.06138629992991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c21da13c59513%3A0x62aa036489cd602b!2sPlano%2C+TX%2C+USA!5e0!3m2!1sen!2sbd!4v1558246953339!5m2!1sen!2sbd"></iframe>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-lg-4">
+						<div class="row pb-30">
+							<div class="col-lg-12">
+								<div class="contact-service">
+									<img src="../resources/img/single-property/small.png"
+										alt="" />
+
+									<h5>Posted By</h5>
+									<table>
+										<tr>
+											<td>User name : <span>#{adController.ad.user.firstName}</span></td>
+										</tr>
+										<tr>
+										
+											<td>Email : <span>#{adController.ad.user.email}</span></td>
+										</tr>
+									</table>
+									<a href="#" class="site-btn list-btn">Make your appointment
+										to buy</a>
+								</div>
+								<h:form>
+								<h:commandButton class="site-btn list-btn" value="Sold" action="#{adController.sold(adController.ad.idAd)}" style="background: #8AD144;border:#8AD144; color:white;margin-left:150px;" />
+								</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	
+
+
+
+
+	</h:body>
+
+</ui:define>
+</ui:composition>
+

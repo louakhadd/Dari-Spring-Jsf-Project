@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+	
+		<link rel='stylesheet prefetch'
+			href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css' />
+		<link rel='stylesheet prefetch'
+			href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
+		<link rel='stylesheet prefetch'
+			href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600' />
+
+
+
+
+		<section class="team-section">
+			<div class="container">
+
+				<div class="row text-center">
+
+					<div class="col-md-4"
+						style="margin: auto; width: 50%; border: 3px solid green; padding: 10px;">
+						<div class="single-team">
+							<div class="membr-pic">
+								<h:graphicImage
+									value="../resources/img/about-img/#{UserRestController.user.picture}"
+									styleClass="bord" />
+							</div>
+							<div class="membr-info">
+								<p>
+									<h:outputText value="#{UserRestController.inviteClient.email}" />
+									<h:outputText
+										value="Bonjour #{UserRestController.user.firstName} #{UserRestController.user.lastname} " />
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		
+
+		<section class="contact-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="contact-form">
+							<h4>change your Password</h4>
+							<h:panelGroup>
+								
+								<h:form>
+
+
+									<h:outputText value="oldpassword" />
+									<h:inputSecret value="#{UserRestController.oldPassword}" />
+									<h:outputText value="new password" />
+									<h:inputSecret value="#{UserRestController.newPassword}" />
+									<h:outputText value="repeat Password" />
+									<h:inputSecret value="#{UserRestController.verifPassword}" />
+									<h:commandButton id="btn" value="changer"
+										action="#{UserRestController.changepassword2()}" />
+									<h:message for="btn" />
+
+
+								</h:form>
+								
+
+
+
+
+
+
+							</h:panelGroup>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="contact-info">
+							<h4>about you</h4>
+							<ul class="contact-addr">
+								<li><i class="flaticon-envelope"></i><span><h:outputText
+											value="#{UserRestController.user.email} " /></span></li>
+								<li><i class="flaticon-placeholder"></i><span> <h:outputText
+											value="you have  #{FollowRestController.nbrefollowuserconnecte}  follwer" /></span></li>
+
+								<li><i class="flaticon-smartphone"></i><span><h:outputText
+											value="you have  #{FollowRestController.nbreFollowinguserconnecte}  follwing" /></span></li>
+								<li><i class="flaticon-smartphone"></i><span><h:outputText
+											value="you have  #{AdRestController.nbreannonce}  annonces" /></span></li>
+							</ul>
+<h:form>
+							<h:link outcome="/pages/client/MyFollower" value="MyFollower" />
+							<br />
+							<h:link outcome="/pages/client/AdFollower"
+								value="Follower annonces" />
+							<br />
+							<h:link outcome="/pages/client/following" value="following" />
+							<br />
+							<h:link outcome="/pages/client/users1" value="All Client" />
+							<br />
+							<h:link outcome="/pages/client/AnnoncesRate" value="annonce of best user rated" />
+<br/>	
+						<h:commandLink action="#{achatLocationControllerJsf.RedirectToWishlist()}"
+							value="My Wish-Lists" /><br/>
+						<h:commandLink action="#{adController.RedirectToFavorite()}"
+							value="Favorite ads" /><br/>
+						<h:commandLink action="#{adController.RedirectToHistorique()}"
+							value="Purchase history" />
+</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+	</ui:define>
+
+</ui:composition>

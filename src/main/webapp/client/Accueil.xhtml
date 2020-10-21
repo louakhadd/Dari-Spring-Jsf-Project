@@ -1,0 +1,426 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+
+
+
+    
+     <div class="filter-search">
+        <div class="container ">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form class="filter-form">
+                        <div class="location">
+                            <p>Property status</p>
+                            <h:selectOneMenu class="filter-location" value="#{adController.rentingtype}">
+                                <f:selectItem itemLabel="Sell" itemValue="#{null}" />
+								<f:selectItems value="#{adController.rentingtypes}" />										
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="location">
+                            <p>Location</p>
+                            <h:selectOneMenu class="filter-location" value= "#{adController.location}">
+                                <f:selectItems value="#{achatLocationControllerJsf.cities}" var="role" itemLabel="#{role}" itemValue="#{role}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="search-type">
+                            <p>Property Type</p>                   
+            				<h:selectOneMenu class="filter-property" value="#{adController.kindofgood}">
+								<f:selectItem itemLabel="choose"  itemValue="#{null}" />
+								<f:selectItems value="#{achatLocationControllerJsf.kindOfGoods}" />
+							</h:selectOneMenu>
+                        </div>                   
+                        <div class="bedrooms">
+                            <p>Price min</p>
+                            <div class="room-filter-pagi">
+                            <h:inputText style="width:110px" value="#{adController.pricemin}"
+                              			a:placeholder="200000DT"></h:inputText>                  			     			
+                            </div>
+                        </div>
+                        <div class="bathrooms">
+                
+                             <p>Price max</p>
+                            <div class="room-filter-pagi">
+                            <h:inputText style="width:110px" value="#{adController.pricemax}"
+                              			a:placeholder="200000DT"></h:inputText>                  			     			
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="search-btn">
+                        <h:form>
+                        <h:commandButton id="btn" value="Search" action="#{adController.getSearch1()}" style="
+    font-weight: 400; background: #8AD144;
+	border: none;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+	padding: 42px 40px 43px 31px;	
+	font-size: 18px;
+	color: #fff;
+	width: 100%;
+		border-radius: 0 0 4px 4px;"></h:commandButton></h:form>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <br/>
+    <h:form style="margin-left:1050px">
+    <h:commandLink value="Advanced search" action="#{achatLocationControllerJsf.Search()}" style="color:green"></h:commandLink>
+    </h:form>
+    
+    
+    
+
+   <section class="hotel-rooms spad">
+
+			<div class="container">
+  				<div class="contact-form" >
+				<div class="row">
+
+					<ui:repeat var="ad" value="#{adController.ads}"  >
+						<div class="col-lg-4 col-md-6">
+							<div class="room-items">								
+								
+							<div class="room-img set-bg">
+									<h:graphicImage  value="/upload/#{ad.image}" >
+								
+                          			<a href="#" class="room-content">
+                               			<i class="flaticon-heart"></i>
+                           			</a>       	
+                    	    </h:graphicImage>
+                    	    </div>
+                    		    
+								<div class="room-text">
+									<div class="room-details">
+										<div class="room-title">
+											<h5>#{ad.description}</h5>
+											<h:outputText value="#{ad.location}"></h:outputText>
+											
+											<a href="#"><i class=""></i> <span>location</span></a>
+										</div>
+									</div>
+									<div class="room-features">
+										<div class="room-info">
+											<div class="beds">
+												<p>Area</p>
+												<img src="../resources/img/rooms/size.png" alt=""/>
+												<i class="flaticon-bath"></i> <span>#{ad.area}</span>
+											</div>
+											<div class="beds">
+												<p>Rooms</p>
+												<img src="../resources/img/rooms/bed.png" alt=""/>
+												<span>#{ad.nbRooms}</span>
+											</div>
+											<div class="beds">
+												<p>Baths</p>
+												<img src="../resources/img/rooms/bath.png" alt="" />
+												<span>#{ad.nbBaths}</span>
+											</div>
+											<div class="beds">
+												<p>Garage</p>
+												<img src="../resources/img/rooms/garage.png" alt="" />
+												<span>#{ad.nbGarage}</span>
+											</div>
+											<div class="beds">
+												<p>Like</p>
+												<img src="../resources/img/rooms/like.png" alt=""
+													width="30" height="30" />
+												<span>#{ad.nbLikes}</span>
+											</div>
+											<div class="beds">
+												<p>Dislike</p>
+												<img src="../resources/img/rooms/dislike.png" alt=""
+													width="30" height="30" />
+												<span>#{ad.nbDisLikes}</span>
+											</div>
+										</div>
+									</div>
+								
+									<div align="center">
+										<h:form>
+
+						
+									<h:outputText value="Make your Rate:" />
+									<p:rating value="#{ratingView.rating3}">
+										<p:ajax event="rate" listener="#{ratingView.onrate}"
+											update="messages" />
+										<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+											update="messages" />
+
+									</p:rating>
+								
+
+									 <p:commandButton  class="site-btn c-btn" value="Comment"
+												action="#{adController.getAdById1(ad.idAd)}"
+												listener="#{ratingView.onrate}" update="messages" /> 
+
+												
+												<p:commandButton class="site-btn c-btn" value="Details"
+												action="#{adController.openDetail(ad)}" />
+							
+												 		
+										<div align="center">
+											<p:commandButton value="Like"
+												action="#{adController.incrementlike(ad.idAd)}" />
+											<p:commandButton value="Dislike"
+												action="#{adController.incrementdislike(ad.idAd)}" />
+										
+										</div>
+										
+										<p:growl id="messages" showDetail="true" />
+						 					<p:commandButton class="site-btn c-btn" value="show comments"
+												oncomplete="PF('dlg').show()"
+												action="#{adController.incrementad(ad.idAd)}" />
+																
+
+
+										</h:form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</ui:repeat>
+
+				</div>
+
+			</div>
+</div>
+		</section>
+   
+
+    <section class="popular-room set-bg p-in" data-setbg="../resources/img/bg-2.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-6">
+                    <div class="slider-active owl-carousel">
+                        <div class="popular-items">
+                            <div class="popular-room-text">
+                                <div class="popular-room-details">
+                                    <div class="popular-room-title">
+                                        <h5>Spacious Modern Smart House</h5>
+                                        <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
+                                        <a href="#"><i class="flaticon-cursor"></i> <span>Show on Map</span></a>
+                                    </div>
+                                </div>
+                                <div class="popular-room-description">
+                                    <div class="popular-room-desc">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales
+                                            commodo ex sed pellentesque. Aliquam vitae purus sed dolor hendrerit
+                                            vehicula imperdiet sed justo. magna.</p>
+                                    </div>
+                                </div>
+                                <div class="popular-room-features">
+                                    <div class="popular-room-info">
+                                        <div class="size">
+                                            <p>Lot Size</p>
+                                            <img src="../resources/img/rooms/size.png" alt=""/>
+                                            <i class="flaticon-bath"></i>
+                                            <span>2561 sqft</span>
+                                        </div>
+                                        <div class="beds">
+                                            <p>Beds</p>
+                                            <img src="../resources/img/rooms/bed.png" alt=""/>
+                                            <span>9</span>
+                                        </div>
+                                        <div class="baths">
+                                            <p>Baths</p>
+                                            <img src="../resources/img/rooms/bath.png" alt=""/>
+                                            <span>2</span>
+                                        </div>
+                                        <div class="garage">
+                                            <p>Garage</p>
+                                            <img src="../resources/img/rooms/garage.png" alt=""/>
+                                            <span>1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popular-room-price">
+                                    <p>For Sale</p>
+                                    <span>$345,000</span>
+                                    <span class="deal">Best Deal</span>
+                                </div>
+                                <a href="#" class="site-btn btn-line">View Property</a>
+                            </div>
+                        </div>
+                        <div class="popular-items">
+                            <div class="popular-room-text">
+                                <div class="popular-room-details">
+                                    <div class="popular-room-title">
+                                        <h5>Spacious Modern Smart House</h5>
+                                        <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
+                                        <a href="#"><i class="flaticon-cursor"></i> <span>Show on Map</span></a>
+                                    </div>
+                                </div>
+                                <div class="popular-room-description">
+                                    <div class="popular-room-desc">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales
+                                            commodo ex sed pellentesque. Aliquam vitae purus sed dolor hendrerit
+                                            vehicula imperdiet sed justo. magna.</p>
+                                    </div>
+                                </div>
+                                <div class="popular-room-features">
+                                    <div class="popular-room-info">
+                                        <div class="size">
+                                            <p>Lot Size</p>
+                                            <img src="../resources/img/rooms/size.png" alt=""/>
+                                            <i class="flaticon-bath"></i>
+                                            <span>2561 sqft</span>
+                                        </div>
+                                        <div class="beds">
+                                            <p>Beds</p>
+                                            <img src="../resources/img/rooms/bed.png" alt=""/>
+                                            <span>9</span>
+                                        </div>
+                                        <div class="baths">
+                                            <p>Baths</p>
+                                            <img src="../resources/img/rooms/bath.png" alt=""/>
+                                            <span>2</span>
+                                        </div>
+                                        <div class="garage">
+                                            <p>Garage</p>
+                                            <img src="../resources/img/rooms/garage.png" alt=""/>
+                                            <span>1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popular-room-price">
+                                    <p>For Sale</p>
+                                    <span>$345,000</span>
+                                    <span class="deal">Best Deal</span>
+                                </div>
+                                <a href="#" class="site-btn btn-line">View Property</a>
+                            </div>
+                        </div>
+                        <div class="popular-items">
+                            <div class="popular-room-text">
+                                <div class="popular-room-details">
+                                    <div class="popular-room-title">
+                                        <h5>Spacious Modern Smart House</h5>
+                                        <a href="#"><i class="flaticon-placeholder"></i> <span>Location</span></a>
+                                        <a href="#"><i class="flaticon-cursor"></i> <span>Show on Map</span></a>
+                                    </div>
+                                </div>
+                                <div class="popular-room-description">
+                                    <div class="popular-room-desc">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales
+                                            commodo ex sed pellentesque. Aliquam vitae purus sed dolor hendrerit
+                                            vehicula imperdiet sed justo. magna.</p>
+                                    </div>
+                                </div>
+                                <div class="popular-room-features">
+                                    <div class="popular-room-info">
+                                        <div class="size">
+                                            <p>Lot Size</p>
+                                            <img src="../resources/img/rooms/size.png" alt=""/>
+                                            <i class="flaticon-bath"></i>
+                                            <span>2561 sqft</span>
+                                        </div>
+                                        <div class="beds">
+                                            <p>Beds</p>
+                                            <img src="../resources/img/rooms/bed.png" alt=""/>
+                                            <span>9</span>
+                                        </div>
+                                        <div class="baths">
+                                            <p>Baths</p>
+                                            <img src="../resources/img/rooms/bath.png" alt=""/>
+                                            <span>2</span>
+                                        </div>
+                                        <div class="garage">
+                                            <p>Garage</p>
+                                            <img src="../resources/img/rooms/garage.png" alt=""/>
+                                            <span>1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="popular-room-price">
+                                    <p>For Sale</p>
+                                    <span>$345,000</span>
+                                    <span class="deal">Best Deal</span>
+                                </div>
+                                <a href="#" class="site-btn btn-line">View Property</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="newslatter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="newslatter-text">
+                        <img src="../resources/img/message.png" alt=""/>
+                        <h4>Join our mailing to get weekly updates on <br/>our exclusive deals.</h4>
+                        <form>
+                            <input type="text" placeholder="Email address"/>
+                            <button type="submit" class="site-btn news-btn">Subscribe!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-side">
+                        <h2><span>Why choose homes?</span><br/>Because we we are the best in <br/>the business.</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id est nec nisl tristique
+                            dignissim semper sed diam. Donec vulputate neque in massa hendrerit, non dignissim ipsum
+                            varius. Mauris dignissim libero ipsum, nec molestie nulla molestie at. Nam imperdiet
+                            hendrerit finibus. Sed porttitor ultricies sagittis. Nullam lobortis nec quam vitae
+                            venenatis. </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-side">
+                        <ul>
+                            <li><img src="../resources/img/check.png" alt=""/>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </li>
+                            <li><img src="../resources/img/check.png" alt=""/>Praesent tincidunt diam in ante faucibus tristique.</li>
+                            <li><img src="../resources/img/check.png" alt=""/>Vivamus id nisl sed mi varius lobortis.</li>
+                            <li><img src="../resources/img/check.png" alt=""/>Suspendisse sit amet erat placerat, molestie neque id
+                            </li>
+                            <li><img src="../resources/img/check.png" alt=""/>Fusce pretium libero sit amet ipsum posuere pretium.
+                            </li>
+                            <li><img src="../resources/img/check.png" alt=""/>Praesent tincidunt diam in ante faucibus tristique.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section class="instagram">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Don’t forget to follow us on Instagram @homes</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+
+
+</ui:define>
+</ui:composition>

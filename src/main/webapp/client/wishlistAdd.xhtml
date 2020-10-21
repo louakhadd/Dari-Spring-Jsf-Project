@@ -1,0 +1,245 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:p1="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+
+
+		<style type="text/css">
+.color {
+	BackColor: #F0F0F0;
+}
+</style>
+
+
+		<h:head>
+
+
+
+
+
+			<link
+				href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+				rel="stylesheet" />
+
+
+			<h:outputStylesheet library="test" name="css/bootstrap.min.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/font-awesome.min.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/nice-select.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/owl.carousel.min.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/jquery-ui.min.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/slicknav.min.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/flaticon.css"></h:outputStylesheet>
+			<h:outputStylesheet library="test" name="css/style.css"></h:outputStylesheet>
+
+
+		</h:head>
+
+		<body>
+
+
+			<section class="contact-section">
+				<div class="container">
+					<div class="contact-form">
+						<div class="row">
+							<div class="col-lg-8">
+								<div class="contact-form">
+
+									<h3 style="color: #483D8B">Add a new Wishlist</h3>
+									<p>Add a new wishlist to get notified when a house with the
+										same criteria is putted on our website</p>
+									<br />
+									<p:growl id="messages" showDetail="true" />
+									<h:form enctype="multipart/form-data">
+
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText style="font-style:italic"
+													value="Kind Of Good:"></h:outputText>
+											</div>
+											<div class="col-lg-6">
+												<h:selectOneMenu
+													value="#{achatLocationControllerJsf.kindofgood}">
+													<f:selectItem itemLabel="Choose kindofgood"
+														itemValue="#{null}" />
+													<f:selectItems
+														value="#{achatLocationControllerJsf.kindOfGoods}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+										<br />
+
+
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText style="font-style:italic" value="Renting Type"></h:outputText>
+											</div>
+											<div class="col-lg-6">
+												<h:selectOneMenu
+													value="#{achatLocationControllerJsf.typeAnnonce}">
+													<f:selectItem itemLabel="Sell" itemValue="#{null}" />
+													<f:selectItems
+														value="#{achatLocationControllerJsf.rentingTypes}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+										<br />
+
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText style="font-style:italic" value="Location:"></h:outputText>
+												<br />
+											</div>
+											<div class="col-lg-6">
+												<h:selectOneMenu
+													value="#{achatLocationControllerJsf.location}">
+													<f:selectItems value="#{achatLocationControllerJsf.cities}"
+														var="role" itemLabel="#{role}" itemValue="#{role}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText value="Start Date"></h:outputText>
+											</div>
+											<div class="col-lg-6">
+												<p:calendar id="inline"
+													value="#{achatLocationControllerJsf.startDate}" />
+											</div>
+										</div>
+										<br />
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText value="Rent Period"></h:outputText>
+											</div>
+											<div class="col-lg-6">
+												<h:selectOneMenu
+													value="#{achatLocationControllerJsf.rentperiod}">
+													<f:selectItem itemLabel="Choose your rent period"
+														itemValue="#{null}" />
+													<f:selectItems
+														value="#{achatLocationControllerJsf.rentperiods}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+										<br />
+										<div class="row">
+											<div class="col-lg-6">
+												<h:outputText value="End Date "></h:outputText>
+											</div>
+											<div class="col-lg-6">
+												<p:calendar id="inline1"
+													value="#{achatLocationControllerJsf.endDate}" />
+											</div>
+										</div>
+
+										<h:outputText style="font-style:italic" value="Budget minimum"></h:outputText>
+										<h:inputText id="prixmin"
+											value="#{achatLocationControllerJsf.budgetmin}"
+											validatorMessage="Price must be positive">
+											<f:validateDoubleRange minimum="0" for="prixmin" />
+										</h:inputText>
+										<h:message for="prixmin" style="color:red;" />
+										<br />
+
+										<h:outputText style="font-style:italic" value="Budget maximum"></h:outputText>
+										<h:inputText value="#{achatLocationControllerJsf.budgetmax}"></h:inputText>
+
+										<h:outputText style="font-style:italic" value="Minimum Area"></h:outputText>
+										<h:inputText id="areamin"
+											value="#{achatLocationControllerJsf.areamin}"
+											validatorMessage="Area must be positive">
+											<f:validateDoubleRange minimum="0" maximum="3000" />
+										</h:inputText>
+										<h:message for="areamin" style="color:red;" />
+										<br />
+
+										<h:outputText style="font-style:italic" value="Maximum Area"></h:outputText>
+										<h:inputText id="areamax"
+											value="#{achatLocationControllerJsf.areamax}"
+											validatorMessage="Area must be positive">
+											<f:validateDoubleRange minimum="0" />
+										</h:inputText>
+
+										<h:outputText style="font-style:italic"
+											value="Number of Bathrooms"></h:outputText>
+										<h:inputText id="nbBaths"
+											value="#{achatLocationControllerJsf.nbBaths}"></h:inputText>
+
+										<h:outputText style="font-style:italic"
+											value="Number of rooms"></h:outputText>
+										<h:inputText id="nbRooms"
+											value="#{achatLocationControllerJsf.nbRooms}"></h:inputText>
+
+										<h:outputText style="font-style:italic"
+											value="Number of Garage/Parking"></h:outputText>
+										<h:inputText id="nbGarage"
+											value="#{achatLocationControllerJsf.nbGarage}"></h:inputText>
+
+
+										<h:outputText style="font-style:italic" value="Terrace"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.terrace}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="SwimmingPool"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.swimmingPool}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="Garden"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.garden}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="Furnished"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.furnished}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic"
+											value="AirConditioning"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.airConditioning}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="Heater"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.heater}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="SousSol/Cave"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.sousSol}"></h:selectBooleanCheckbox>
+										<h:outputText style="font-style:italic" value="Urgent"></h:outputText>
+										<h:selectBooleanCheckbox
+											value="#{achatLocationControllerJsf.urgent}"></h:selectBooleanCheckbox>
+
+
+										<br />
+										<p:commandButton class="site-btn c-btn" value="Save"
+											action="#{achatLocationControllerJsf.addEmploye()}" />
+
+									</h:form>
+
+								</div>
+							</div>
+
+
+
+							<div class="col-lg-4">
+								<div class="contact-info">
+									<h4>Contact Details</h4>
+									<ul class="contact-addr">
+										<li><i class="flaticon-placeholder"></i><span>132
+												Liberty Streetelit, Plano, Texas</span></li>
+										<li><i class="flaticon-envelope"></i><span>hello@home.com</span></li>
+										<li><i class="flaticon-smartphone"></i><span>214-805-4428</span></li>
+									</ul>
+									<p>Monday – Friday: 9 am – 5 pm</p>
+									<p>Saturday: 9 am – 1pm</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+		</body>
+	</ui:define>
+</ui:composition>

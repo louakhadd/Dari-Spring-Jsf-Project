@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+	
+   
+
+<h1 style="color: #311044; margin-left:500px;margin-top:7px;">Sell Ads</h1>   
+
+
+
+		<section class="hotel-rooms spad">
+
+			<div class="container">
+  				<div class="contact-form" >
+				<div class="row">
+
+
+					<ui:repeat var="ad" value="#{adController.vente}"  >
+
+						<div class="col-lg-4 col-md-6">
+							<div class="room-items">
+								<h:graphicImage value="/upload/#{ad.image}" />
+								<div class="room-text">
+									<div class="room-details">
+										<div class="room-title">
+											<h5>#{ad.description}</h5>
+											<h:outputText value="#{ad.location}"></h:outputText>
+											
+											<a href="#"><i class=""></i> <span>location</span></a>
+										</div>
+									</div>
+									<div class="room-features">
+										<div class="room-info">
+											<div class="beds">
+												<p>Area</p>
+												 <img src="../resources/img/rooms/size.png" alt=""/>
+												<i class="flaticon-bath"></i> <span>#{ad.area}</span>
+											</div>
+											<div class="beds">
+												<p>Rooms</p>
+												 <img src="../resources/img/rooms/bed.png" alt=""/>
+												<span>#{ad.nbRooms}</span>
+											</div>
+											<div class="beds">
+												<p>Baths</p>
+												<img src="../resources/img/rooms/bath.png" alt=""/>
+												<span>#{ad.nbBaths}</span>
+											</div>
+											<div class="beds">
+												<p>Garage</p>
+												<img src="../resources/img/rooms/garage.png" alt=""/>
+												<span>#{ad.nbGarage}</span>
+											</div>
+											<div class="beds">
+												<p>Like</p>
+												<img src="../resources/img/rooms/like.png" alt=""
+													width="30" height="30" />
+												<span>#{ad.nbLikes}</span>
+											</div>
+											<div class="beds">
+												<p>Dislike</p>
+												<img src="../resources/img/rooms/dislike.png" alt=""
+													width="30" height="30" />
+												<span>#{ad.nbDisLikes}</span>
+											</div>
+										</div>
+									</div>
+								
+									<div align="center">
+										<h:form>
+
+						
+									<h:outputText value="Make your Rate:" />
+									<p:rating value="#{ratingView.rating3}">
+										<p:ajax event="rate" listener="#{ratingView.onrate}"
+											update="messages" />
+										<p:ajax event="cancel" listener="#{ratingView.oncancel}"
+											update="messages" />
+
+									</p:rating>
+								
+
+									 <p:commandButton  class="site-btn c-btn" value="Comment"
+												action="#{adController.getAdById1(ad.idAd)}"
+												listener="#{ratingView.onrate}" update="messages" /> 
+	   <h:panelGroup rendered="#{not empty UserRestController.user.id and ad.user.id==UserRestController.user.id}">
+												
+																				
+												<p:commandButton class="site-btn c-btn" value="Comments"
+												action="#{adController.openDetail(ad)}" listener="#{ratingView.onrate}" update="messages" />
+												
+												
+										
+												</h:panelGroup> 		
+										<div align="center">
+											<p:commandButton value="Like"
+												action="#{adController.incrementlike(ad.idAd)}" />
+											<p:commandButton value="Dislike"
+												action="#{adController.incrementdislike(ad.idAd)}" />
+												
+						
+							
+							
+										</div>
+										
+											<p:growl id="messages" showDetail="true" />
+										
+						
+
+										</h:form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</ui:repeat>
+
+				</div>
+
+			</div>
+</div>
+		</section>
+
+</ui:define>
+</ui:composition>
